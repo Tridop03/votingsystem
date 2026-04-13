@@ -230,6 +230,14 @@ just use this to understand the data shape for API calls):
 ```
 ## AXIOS SETUP (axios.js):
 
+```
+    - Base URL: http://localhost:8080
+    - Attach JWT token automatically from localStorage 
+    to every request Authorization header as Bearer token
+    - Response interceptor: if 401 received, clear token 
+    and redirect to /login
+    - Request interceptor: attach token if it exists
+```
 
 ```
     ROUTE PROTECTION:
