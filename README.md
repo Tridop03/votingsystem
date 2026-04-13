@@ -207,7 +207,7 @@ Boot REST API running on http://localhost:8080.
     │   ├── application.properties
     │   └── schema.sql
     └── pom.xml
-    
+
 ```
 
 ## DATABASE STRUCTURE REFERENCE (read-only,
@@ -394,57 +394,37 @@ just use this to understand the data shape for API calls):
 
 ```
 
+## DATABASE SCHEMA - Create these exact tables:
 
+```
+    1. voters (id, full_name, email, password, national_id, phone, 
+    address, profile_picture, role ENUM(ADMIN,VOTER), 
+    status ENUM(PENDING,ACTIVE,DEACTIVATED), 
+    email_verified BOOLEAN, created_at TIMESTAMP)
 
-You are an expert Java Spring Boot developer. Create a complete, 
-fully functional backend for an Online Voting System with the 
-following specifications:
+    2. elections (id, title, description, start_time DATETIME, 
+    end_time DATETIME, is_active BOOLEAN, results_locked BOOLEAN, 
+    created_by, created_at TIMESTAMP)
 
-TECH STACK:
-- Java Spring Boot
-- Spring Security + JWT Authentication
-- Spring Data JPA + Hibernate
-- MySQL Database
-- Maven build tool
-- JavaMailSender for email services
-- iTextPDF for PDF export
-- OpenCSV for CSV export
+    3. election_categories (id, election_id FK, category_name)
 
-DATABASE SCHEMA - Create these exact tables:
+    4. candidates (id, full_name, party, bio, photo_url, 
+    election_category_id FK)
 
-1. voters (id, full_name, email, password, national_id, phone, 
-   address, profile_picture, role ENUM(ADMIN,VOTER), 
-   status ENUM(PENDING,ACTIVE,DEACTIVATED), 
-   email_verified BOOLEAN, created_at TIMESTAMP)
+    5. votes (id, voter_id FK, candidate_id FK, 
+    election_category_id FK, voted_at TIMESTAMP)
 
-2. elections (id, title, description, start_time DATETIME, 
-   end_time DATETIME, is_active BOOLEAN, results_locked BOOLEAN, 
-   created_by, created_at TIMESTAMP)
+    6. notifications (id, voter_id FK, message, is_read BOOLEAN, 
+    created_at TIMESTAMP)
 
-3. election_categories (id, election_id FK, category_name)
+    7. announcements (id, title, message, created_by FK, 
+    created_at TIMESTAMP)
 
-4. candidates (id, full_name, party, bio, photo_url, 
-   election_category_id FK)
+    8. audit_logs (id, user_id FK, action, details, 
+    timestamp TIMESTAMP)
+```
 
-5. votes (id, voter_id FK, candidate_id FK, 
-   election_category_id FK, voted_at TIMESTAMP)
-
-6. notifications (id, voter_id FK, message, is_read BOOLEAN, 
-   created_at TIMESTAMP)
-
-7. announcements (id, title, message, created_by FK, 
-   created_at TIMESTAMP)
-
-8. audit_logs (id, user_id FK, action, details, 
-   timestamp TIMESTAMP)
-
-FULL PROJECT STRUCTURE TO GENERATE:
-
-
-
-
-ENDPOINTS TO IMPLEMENT:
-
+## ENDPOINTS TO IMPLEMENT:
 ```
 
     Auth:
