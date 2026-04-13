@@ -239,66 +239,71 @@ AUTH CONTEXT (AuthContext.jsx):
 - Decode JWT to get user role (ADMIN or VOTER)
 - Expose isAdmin boolean, isAuthenticated boolean
 
-ROUTE PROTECTION:
-- ProtectedRoute.jsx: redirect to /login if not 
-  authenticated
-- AdminRoute.jsx: redirect to /voter/dashboard if 
-  authenticated but not ADMIN role
-- App.jsx routes:
-  / → redirect based on role after login
-  /login → Login.jsx (public)
-  /register → Register.jsx (public)
-  /forgot-password → ForgotPassword.jsx (public)
-  /reset-password → ResetPassword.jsx (public)
-  /voter/dashboard → VoterDashboard.jsx (protected)
-  /voter/elections → ElectionList.jsx (protected)
-  /voter/elections/:id → ElectionDetail.jsx (protected)
-  /voter/vote/:id → VotingPage.jsx (protected)
-  /voter/vote/:id/confirm → VoteConfirmation.jsx (protected)
-  /voter/history → VotingHistory.jsx (protected)
-  /voter/results/:id → Results.jsx (protected)
-  /voter/profile → VoterProfile.jsx (protected)
-  /admin/dashboard → AdminDashboard.jsx (admin only)
-  /admin/elections → ManageElections.jsx (admin only)
-  /admin/elections/new → ElectionForm.jsx (admin only)
-  /admin/elections/:id/edit → ElectionForm.jsx (admin only)
-  /admin/candidates → ManageCandidates.jsx (admin only)
-  /admin/candidates/new → CandidateForm.jsx (admin only)
-  /admin/candidates/:id/edit → CandidateForm.jsx (admin only)
-  /admin/voters → ManageVoters.jsx (admin only)
-  /admin/voters/:id → VoterDetail.jsx (admin only)
-  /admin/results/:id → ResultsPage.jsx (admin only)
-  /admin/audit-logs → AuditLogs.jsx (admin only)
-  /admin/announcements → Announcements.jsx (admin only)
+```
+    ROUTE PROTECTION:
+    - ProtectedRoute.jsx: redirect to /login if not 
+    authenticated
+    - AdminRoute.jsx: redirect to /voter/dashboard if 
+    authenticated but not ADMIN role
+    - App.jsx routes:
+    / → redirect based on role after login
+    /login → Login.jsx (public)
+    /register → Register.jsx (public)
+    /forgot-password → ForgotPassword.jsx (public)
+    /reset-password → ResetPassword.jsx (public)
+    /voter/dashboard → VoterDashboard.jsx (protected)
+    /voter/elections → ElectionList.jsx (protected)
+    /voter/elections/:id → ElectionDetail.jsx (protected)
+    /voter/vote/:id → VotingPage.jsx (protected)
+    /voter/vote/:id/confirm → VoteConfirmation.jsx (protected)
+    /voter/history → VotingHistory.jsx (protected)
+    /voter/results/:id → Results.jsx (protected)
+    /voter/profile → VoterProfile.jsx (protected)
+    /admin/dashboard → AdminDashboard.jsx (admin only)
+    /admin/elections → ManageElections.jsx (admin only)
+    /admin/elections/new → ElectionForm.jsx (admin only)
+    /admin/elections/:id/edit → ElectionForm.jsx (admin only)
+    /admin/candidates → ManageCandidates.jsx (admin only)
+    /admin/candidates/new → CandidateForm.jsx (admin only)
+    /admin/candidates/:id/edit → CandidateForm.jsx (admin only)
+    /admin/voters → ManageVoters.jsx (admin only)
+    /admin/voters/:id → VoterDetail.jsx (admin only)
+    /admin/results/:id → ResultsPage.jsx (admin only)
+    /admin/audit-logs → AuditLogs.jsx (admin only)
+    /admin/announcements → Announcements.jsx (admin only)
+```
 
-FORM VALIDATION with React Hook Form + Yup:
+```
+    FORM VALIDATION with React Hook Form + Yup:
 
-Register form schema:
-- full_name: required, min 3 chars
-- email: required, valid email format
-- national_id: required, min 6 chars
-- phone: required, valid phone number
-- password: required, min 8 chars,
-  must contain uppercase, number, special char
-- confirm_password: must match password
+    Register form schema:
+    - full_name: required, min 3 chars
+    - email: required, valid email format
+    - national_id: required, min 6 chars
+    - phone: required, valid phone number
+    - password: required, min 8 chars,
+    must contain uppercase, number, special char
+    - confirm_password: must match password
 
-Login form schema:
-- email: required, valid email
-- password: required
+    Login form schema:
+    - email: required, valid email
+    - password: required
 
-Election form schema:
-- title: required, min 5 chars
-- description: required, min 10 chars
-- start_time: required, must be future date
-- end_time: required, must be after start_time
+    Election form schema:
+    - title: required, min 5 chars
+    - description: required, min 10 chars
+    - start_time: required, must be future date
+    - end_time: required, must be after start_time
 
-Candidate form schema:
-- full_name: required
-- party: required
-- bio: required, min 20 chars
-- election_category_id: required
+    Candidate form schema:
+    - full_name: required
+    - party: required
+    - bio: required, min 20 chars
+    - election_category_id: required
 
-.env file:
-VITE_API_BASE_URL=http://localhost:8080
+    .env file:
+    VITE_API_BASE_URL=http://localhost:8080
+
+```
 
 a voting system
