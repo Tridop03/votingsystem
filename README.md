@@ -125,35 +125,37 @@ frontend/
 DATABASE STRUCTURE REFERENCE (read-only,
 just use this to understand the data shape for API calls):
 
-voters table:
-- id, full_name, email, password, national_id, phone,
-  address, profile_picture, role (ADMIN/VOTER),
-  status (PENDING/ACTIVE/DEACTIVATED),
-  email_verified, created_at
+```
+    voters table:
+    - id, full_name, email, password, national_id, phone,
+    address, profile_picture, role (ADMIN/VOTER),
+    status (PENDING/ACTIVE/DEACTIVATED),
+    email_verified, created_at
 
-elections table:
-- id, title, description, start_time, end_time,
-  is_active, results_locked, created_by, created_at
+    elections table:
+    - id, title, description, start_time, end_time,
+    is_active, results_locked, created_by, created_at
 
-election_categories table:
-- id, election_id, category_name
+    election_categories table:
+    - id, election_id, category_name
 
-candidates table:
-- id, full_name, party, bio, photo_url,
-  election_category_id
+    candidates table:
+    - id, full_name, party, bio, photo_url,
+    election_category_id
 
-votes table:
-- id, voter_id, candidate_id,
-  election_category_id, voted_at
+    votes table:
+    - id, voter_id, candidate_id,
+    election_category_id, voted_at
 
-notifications table:
-- id, voter_id, message, is_read, created_at
+    notifications table:
+    - id, voter_id, message, is_read, created_at
 
-announcements table:
-- id, title, message, created_by, created_at
+    announcements table:
+    - id, title, message, created_by, created_at
 
-audit_logs table:
-- id, user_id, action, details, timestamp
+    audit_logs table:
+    - id, user_id, action, details, timestamp
+```
 
 # API CALLS REFERENCE - All axios calls must use these 
 ```
