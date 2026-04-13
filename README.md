@@ -1,7 +1,7 @@
-# votingsystem
-Online voting system
+# Voting System
 
-# full structure voting system 
+
+## Full structure voting system 
 
 Fully functional frontend for an Online Voting System using React, 
 Tailwind CSS, and Axios. This frontend connects to a Spring 
