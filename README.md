@@ -7,16 +7,18 @@ Fully functional frontend for an Online Voting System using React,
 Tailwind CSS, and Axios. This frontend connects to a Spring 
 Boot REST API running on http://localhost:8080.
 
-TECH STACK:
-- React 18 (Vite)
-- Tailwind CSS
-- Axios (API calls)
-- React Router DOM v6 (navigation)
-- Context API (global state)
-- Recharts (vote result charts)
-- React Hook Form + Yup (form validation)
-- React Toastify (notifications)
-- date-fns (date formatting)
+## TECH STACK:
+```
+    - React 18 (Vite)
+    - Tailwind CSS
+    - Axios (API calls)
+    - React Router DOM v6 (navigation)
+    - Context API (global state)
+    - Recharts (vote result charts)
+    - React Hook Form + Yup (form validation)
+    - React Toastify (notifications)
+    - date-fns (date formatting)
+```
 
 FULL PROJECT STRUCTURE TO GENERATE:
 
