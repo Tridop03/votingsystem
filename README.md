@@ -232,12 +232,7 @@ AXIOS SETUP (axios.js):
   and redirect to /login
 - Request interceptor: attach token if it exists
 
-AUTH CONTEXT (AuthContext.jsx):
-- Store user object and token in state
-- On app load check localStorage for existing token
-- Provide login(), logout(), register() functions
-- Decode JWT to get user role (ADMIN or VOTER)
-- Expose isAdmin boolean, isAuthenticated boolean
+
 
 ```
     ROUTE PROTECTION:
