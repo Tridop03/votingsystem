@@ -155,75 +155,77 @@ announcements table:
 audit_logs table:
 - id, user_id, action, details, timestamp
 
-API CALLS REFERENCE - All axios calls must use these 
-exact endpoints from http://localhost:8080:
+# API CALLS REFERENCE - All axios calls must use these 
+```
+    exact endpoints from http://localhost:8080:
 
-authAPI.js:
-- register(data) → POST /api/auth/register
-- login(data) → POST /api/auth/login
-- forgotPassword(email) → POST /api/auth/forgot-password
-- resetPassword(data) → POST /api/auth/reset-password
-- verifyEmail(token) → GET /api/auth/verify-email?token=
+    authAPI.js:
+    - register(data) → POST /api/auth/register
+    - login(data) → POST /api/auth/login
+    - forgotPassword(email) → POST /api/auth/forgot-password
+    - resetPassword(data) → POST /api/auth/reset-password
+    - verifyEmail(token) → GET /api/auth/verify-email?token=
 
-voterAPI.js:
-- getProfile() → GET /api/voter/profile
-- updateProfile(data) → PUT /api/voter/profile
-- uploadPhoto(file) → PUT /api/voter/profile/photo
-- deleteAccount() → DELETE /api/voter/account
-- getVotingHistory() → GET /api/voter/history
-- getNotifications() → GET /api/voter/notifications
-- markNotificationRead(id) → PUT /api/voter/notifications/{id}/read
+    voterAPI.js:
+    - getProfile() → GET /api/voter/profile
+    - updateProfile(data) → PUT /api/voter/profile
+    - uploadPhoto(file) → PUT /api/voter/profile/photo
+    - deleteAccount() → DELETE /api/voter/account
+    - getVotingHistory() → GET /api/voter/history
+    - getNotifications() → GET /api/voter/notifications
+    - markNotificationRead(id) → PUT /api/voter/notifications/{id}/read
 
-electionAPI.js:
-- getAllElections() → GET /api/elections
-- getActiveElections() → GET /api/elections/active
-- getUpcomingElections() → GET /api/elections/upcoming
-- getPastElections() → GET /api/elections/past
-- getElectionById(id) → GET /api/elections/{id}
+    electionAPI.js:
+    - getAllElections() → GET /api/elections
+    - getActiveElections() → GET /api/elections/active
+    - getUpcomingElections() → GET /api/elections/upcoming
+    - getPastElections() → GET /api/elections/past
+    - getElectionById(id) → GET /api/elections/{id}
 
-voteAPI.js:
-- castVote(data) → POST /api/votes/cast
-- checkVoteStatus(electionId) → GET /api/votes/status/{electionId}
+    voteAPI.js:
+    - castVote(data) → POST /api/votes/cast
+    - checkVoteStatus(electionId) → GET /api/votes/status/{electionId}
 
-resultsAPI.js:
-- getResults(electionId) → GET /api/admin/results/{electionId}
-- exportPDF(electionId) → GET /api/admin/results/{electionId}/export/pdf
-- exportCSV(electionId) → GET /api/admin/results/{electionId}/export/csv
+    resultsAPI.js:
+    - getResults(electionId) → GET /api/admin/results/{electionId}
+    - exportPDF(electionId) → GET /api/admin/results/{electionId}/export/pdf
+    - exportCSV(electionId) → GET /api/admin/results/{electionId}/export/csv
 
-notificationAPI.js:
-- getNotifications() → GET /api/voter/notifications
-- markAsRead(id) → PUT /api/voter/notifications/{id}/read
+    notificationAPI.js:
+    - getNotifications() → GET /api/voter/notifications
+    - markAsRead(id) → PUT /api/voter/notifications/{id}/read
 
-adminAPI.js (voters):
-- getAllVoters() → GET /api/admin/voters
-- getPendingVoters() → GET /api/admin/voters/pending
-- getVoterById(id) → GET /api/admin/voters/{id}
-- getVoterActivity(id) → GET /api/admin/voters/{id}/activity
-- approveVoter(id) → PUT /api/admin/voters/{id}/approve
-- deactivateVoter(id) → PUT /api/admin/voters/{id}/deactivate
-- resetVoterPassword(id) → PUT /api/admin/voters/{id}/reset-password
+    adminAPI.js (voters):
+    - getAllVoters() → GET /api/admin/voters
+    - getPendingVoters() → GET /api/admin/voters/pending
+    - getVoterById(id) → GET /api/admin/voters/{id}
+    - getVoterActivity(id) → GET /api/admin/voters/{id}/activity
+    - approveVoter(id) → PUT /api/admin/voters/{id}/approve
+    - deactivateVoter(id) → PUT /api/admin/voters/{id}/deactivate
+    - resetVoterPassword(id) → PUT /api/admin/voters/{id}/reset-password
 
-adminAPI.js (elections):
-- getAllElections() → GET /api/admin/elections
-- createElection(data) → POST /api/admin/elections
-- updateElection(id, data) → PUT /api/admin/elections/{id}
-- deleteElection(id) → DELETE /api/admin/elections/{id}
-- publishElection(id) → PUT /api/admin/elections/{id}/publish
-- lockResults(id) → PUT /api/admin/elections/{id}/lock-results
+    adminAPI.js (elections):
+    - getAllElections() → GET /api/admin/elections
+    - createElection(data) → POST /api/admin/elections
+    - updateElection(id, data) → PUT /api/admin/elections/{id}
+    - deleteElection(id) → DELETE /api/admin/elections/{id}
+    - publishElection(id) → PUT /api/admin/elections/{id}/publish
+    - lockResults(id) → PUT /api/admin/elections/{id}/lock-results
 
-adminAPI.js (candidates):
-- getAllCandidates() → GET /api/admin/candidates
-- createCandidate(data) → POST /api/admin/candidates
-- updateCandidate(id, data) → PUT /api/admin/candidates/{id}
-- deleteCandidate(id) → DELETE /api/admin/candidates/{id}
+    adminAPI.js (candidates):
+    - getAllCandidates() → GET /api/admin/candidates
+    - createCandidate(data) → POST /api/admin/candidates
+    - updateCandidate(id, data) → PUT /api/admin/candidates/{id}
+    - deleteCandidate(id) → DELETE /api/admin/candidates/{id}
 
-adminAPI.js (system):
-- getAuditLogs() → GET /api/admin/audit-logs
-- getAnnouncements() → GET /api/admin/announcements
-- createAnnouncement(data) → POST /api/admin/announcements
-- updateAnnouncement(id, data) → PUT /api/admin/announcements/{id}
-- deleteAnnouncement(id) → DELETE /api/admin/announcements/{id}
+    adminAPI.js (system):
+    - getAuditLogs() → GET /api/admin/audit-logs
+    - getAnnouncements() → GET /api/admin/announcements
+    - createAnnouncement(data) → POST /api/admin/announcements
+    - updateAnnouncement(id, data) → PUT /api/admin/announcements/{id}
+    - deleteAnnouncement(id) → DELETE /api/admin/announcements/{id}
 
+```
 AXIOS SETUP (axios.js):
 - Base URL: http://localhost:8080
 - Attach JWT token automatically from localStorage 
