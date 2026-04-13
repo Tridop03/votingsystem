@@ -20,109 +20,111 @@ Boot REST API running on http://localhost:8080.
     - date-fns (date formatting)
 ```
 
-FULL PROJECT STRUCTURE TO GENERATE:
+## PROJECT STRUCTURE TO GENERATE:
 
-frontend/
-├── public/
-│   └── index.html
-├── src/
-│   ├── api/
-│   │   ├── axios.js
-│   │   ├── authAPI.js
-│   │   ├── voterAPI.js
-│   │   ├── adminAPI.js
-│   │   ├── electionAPI.js
-│   │   ├── candidateAPI.js
-│   │   ├── voteAPI.js
-│   │   ├── resultsAPI.js
-│   │   └── notificationAPI.js
-│   ├── assets/
-│   │   ├── logo.png
-│   │   └── default-avatar.png
-│   ├── components/
-│   │   ├── layout/
-│   │   │   ├── Navbar.jsx
-│   │   │   ├── Sidebar.jsx
-│   │   │   ├── Footer.jsx
-│   │   │   └── PageWrapper.jsx
-│   │   ├── common/
-│   │   │   ├── Button.jsx
-│   │   │   ├── Input.jsx
-│   │   │   ├── Modal.jsx
-│   │   │   ├── Table.jsx
-│   │   │   ├── Badge.jsx
-│   │   │   ├── Avatar.jsx
-│   │   │   ├── LoadingSpinner.jsx
-│   │   │   ├── ConfirmDialog.jsx
-│   │   │   ├── Pagination.jsx
-│   │   │   ├── SearchBar.jsx
-│   │   │   └── Toast.jsx
-│   │   ├── charts/
-│   │   │   ├── BarChart.jsx
-│   │   │   ├── PieChart.jsx
-│   │   │   └── StatsCard.jsx
-│   │   ├── election/
-│   │   │   ├── ElectionCard.jsx
-│   │   │   ├── ElectionTimer.jsx
-│   │   │   └── ElectionStatusBadge.jsx
-│   │   ├── candidate/
-│   │   │   ├── CandidateCard.jsx
-│   │   │   └── CandidateForm.jsx
-│   │   └── guards/
-│   │       ├── ProtectedRoute.jsx
-│   │       └── AdminRoute.jsx
-│   ├── context/
-│   │   ├── AuthContext.jsx
-│   │   └── NotificationContext.jsx
-│   ├── hooks/
-│   │   ├── useAuth.js
-│   │   ├── useElections.js
-│   │   ├── useCandidates.js
-│   │   ├── useVoters.js
-│   │   └── useNotifications.js
-│   ├── pages/
-│   │   ├── auth/
-│   │   │   ├── Login.jsx
-│   │   │   ├── Register.jsx
-│   │   │   ├── ForgotPassword.jsx
-│   │   │   └── ResetPassword.jsx
-│   │   ├── voter/
-│   │   │   ├── VoterDashboard.jsx
-│   │   │   ├── ElectionList.jsx
-│   │   │   ├── ElectionDetail.jsx
-│   │   │   ├── VotingPage.jsx
-│   │   │   ├── VoteConfirmation.jsx
-│   │   │   ├── VotingHistory.jsx
-│   │   │   ├── Results.jsx
-│   │   │   └── VoterProfile.jsx
-│   │   └── admin/
-│   │       ├── AdminDashboard.jsx
-│   │       ├── elections/
-│   │       │   ├── ManageElections.jsx
-│   │       │   └── ElectionForm.jsx
-│   │       ├── candidates/
-│   │       │   ├── ManageCandidates.jsx
-│   │       │   └── CandidateForm.jsx
-│   │       ├── voters/
-│   │       │   ├── ManageVoters.jsx
-│   │       │   └── VoterDetail.jsx
-│   │       ├── results/
-│   │       │   ├── ResultsPage.jsx
-│   │       │   └── ResultsChart.jsx
-│   │       ├── AuditLogs.jsx
-│   │       └── Announcements.jsx
-│   ├── utils/
-│   │   ├── tokenHelper.js
-│   │   ├── dateFormatter.js
-│   │   ├── roleHelper.js
-│   │   └── exportHelper.js
-│   ├── App.jsx
-│   ├── main.jsx
-│   └── index.css
-├── .env
-├── tailwind.config.js
-├── vite.config.js
-└── package.json
+```
+    frontend/
+    ├── public/
+    │   └── index.html
+    ├── src/
+    │   ├── api/
+    │   │   ├── axios.js
+    │   │   ├── authAPI.js
+    │   │   ├── voterAPI.js
+    │   │   ├── adminAPI.js
+    │   │   ├── electionAPI.js
+    │   │   ├── candidateAPI.js
+    │   │   ├── voteAPI.js
+    │   │   ├── resultsAPI.js
+    │   │   └── notificationAPI.js
+    │   ├── assets/
+    │   │   ├── logo.png
+    │   │   └── default-avatar.png
+    │   ├── components/
+    │   │   ├── layout/
+    │   │   │   ├── Navbar.jsx
+    │   │   │   ├── Sidebar.jsx
+    │   │   │   ├── Footer.jsx
+    │   │   │   └── PageWrapper.jsx
+    │   │   ├── common/
+    │   │   │   ├── Button.jsx
+    │   │   │   ├── Input.jsx
+    │   │   │   ├── Modal.jsx
+    │   │   │   ├── Table.jsx
+    │   │   │   ├── Badge.jsx
+    │   │   │   ├── Avatar.jsx
+    │   │   │   ├── LoadingSpinner.jsx
+    │   │   │   ├── ConfirmDialog.jsx
+    │   │   │   ├── Pagination.jsx
+    │   │   │   ├── SearchBar.jsx
+    │   │   │   └── Toast.jsx
+    │   │   ├── charts/
+    │   │   │   ├── BarChart.jsx
+    │   │   │   ├── PieChart.jsx
+    │   │   │   └── StatsCard.jsx
+    │   │   ├── election/
+    │   │   │   ├── ElectionCard.jsx
+    │   │   │   ├── ElectionTimer.jsx
+    │   │   │   └── ElectionStatusBadge.jsx
+    │   │   ├── candidate/
+    │   │   │   ├── CandidateCard.jsx
+    │   │   │   └── CandidateForm.jsx
+    │   │   └── guards/
+    │   │       ├── ProtectedRoute.jsx
+    │   │       └── AdminRoute.jsx
+    │   ├── context/
+    │   │   ├── AuthContext.jsx
+    │   │   └── NotificationContext.jsx
+    │   ├── hooks/
+    │   │   ├── useAuth.js
+    │   │   ├── useElections.js
+    │   │   ├── useCandidates.js
+    │   │   ├── useVoters.js
+    │   │   └── useNotifications.js
+    │   ├── pages/
+    │   │   ├── auth/
+    │   │   │   ├── Login.jsx
+    │   │   │   ├── Register.jsx
+    │   │   │   ├── ForgotPassword.jsx
+    │   │   │   └── ResetPassword.jsx
+    │   │   ├── voter/
+    │   │   │   ├── VoterDashboard.jsx
+    │   │   │   ├── ElectionList.jsx
+    │   │   │   ├── ElectionDetail.jsx
+    │   │   │   ├── VotingPage.jsx
+    │   │   │   ├── VoteConfirmation.jsx
+    │   │   │   ├── VotingHistory.jsx
+    │   │   │   ├── Results.jsx
+    │   │   │   └── VoterProfile.jsx
+    │   │   └── admin/
+    │   │       ├── AdminDashboard.jsx
+    │   │       ├── elections/
+    │   │       │   ├── ManageElections.jsx
+    │   │       │   └── ElectionForm.jsx
+    │   │       ├── candidates/
+    │   │       │   ├── ManageCandidates.jsx
+    │   │       │   └── CandidateForm.jsx
+    │   │       ├── voters/
+    │   │       │   ├── ManageVoters.jsx
+    │   │       │   └── VoterDetail.jsx
+    │   │       ├── results/
+    │   │       │   ├── ResultsPage.jsx
+    │   │       │   └── ResultsChart.jsx
+    │   │       ├── AuditLogs.jsx
+    │   │       └── Announcements.jsx
+    │   ├── utils/
+    │   │   ├── tokenHelper.js
+    │   │   ├── dateFormatter.js
+    │   │   ├── roleHelper.js
+    │   │   └── exportHelper.js
+    │   ├── App.jsx
+    │   ├── main.jsx
+    │   └── index.css
+    ├── .env
+    ├── tailwind.config.js
+    ├── vite.config.js
+    └── package.json
+```
 
 ## DATABASE STRUCTURE REFERENCE (read-only,
 just use this to understand the data shape for API calls):
