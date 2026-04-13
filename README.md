@@ -9,6 +9,7 @@ Boot REST API running on http://localhost:8080.
 
 ## TECH STACK:
 ```
+    frontend:
     - React 18 (Vite)
     - Tailwind CSS
     - Axios (API calls)
@@ -18,6 +19,16 @@ Boot REST API running on http://localhost:8080.
     - React Hook Form + Yup (form validation)
     - React Toastify (notifications)
     - date-fns (date formatting)
+
+    backend:
+    - Java Spring Boot
+    - Spring Security + JWT Authentication
+    - Spring Data JPA + Hibernate
+    - MySQL Database
+    - Maven build tool
+    - JavaMailSender for email services
+    - iTextPDF for PDF export
+    - OpenCSV for CSV export
 ```
 
 ## PROJECT STRUCTURE TO GENERATE:
