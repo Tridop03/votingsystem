@@ -124,6 +124,90 @@ Boot REST API running on http://localhost:8080.
     ├── tailwind.config.js
     ├── vite.config.js
     └── package.json
+
+
+    backend/
+    ├── src/main/java/com/voting/
+    │   ├── config/
+    │   │   ├── SecurityConfig.java
+    │   │   ├── JwtConfig.java
+    │   │   └── CorsConfig.java
+    │   ├── controller/
+    │   │   ├── AuthController.java
+    │   │   ├── VoterController.java
+    │   │   ├── AdminController.java
+    │   │   ├── CandidateController.java
+    │   │   ├── ElectionController.java
+    │   │   ├── VoteController.java
+    │   │   ├── ResultsController.java
+    │   │   ├── NotificationController.java
+    │   │   ├── AnnouncementController.java
+    │   │   └── AuditLogController.java
+    │   ├── model/
+    │   │   ├── Voter.java
+    │   │   ├── Candidate.java
+    │   │   ├── Vote.java
+    │   │   ├── Election.java
+    │   │   ├── ElectionCategory.java
+    │   │   ├── Notification.java
+    │   │   ├── Announcement.java
+    │   │   ├── AuditLog.java
+    │   │   └── Role.java
+    │   ├── repository/
+    │   │   ├── VoterRepository.java
+    │   │   ├── CandidateRepository.java
+    │   │   ├── VoteRepository.java
+    │   │   ├── ElectionRepository.java
+    │   │   ├── ElectionCategoryRepository.java
+    │   │   ├── NotificationRepository.java
+    │   │   ├── AnnouncementRepository.java
+    │   │   └── AuditLogRepository.java
+    │   ├── service/
+    │   │   ├── AuthService.java
+    │   │   ├── VoterService.java
+    │   │   ├── AdminService.java
+    │   │   ├── VotingService.java
+    │   │   ├── ElectionService.java
+    │   │   ├── CandidateService.java
+    │   │   ├── ResultsService.java
+    │   │   ├── NotificationService.java
+    │   │   ├── AnnouncementService.java
+    │   │   ├── AuditLogService.java
+    │   │   ├── EmailService.java
+    │   │   └── ExportService.java
+    │   ├── security/
+    │   │   ├── JwtUtil.java
+    │   │   ├── JwtFilter.java
+    │   │   └── UserDetailsServiceImpl.java
+    │   ├── dto/
+    │   │   ├── request/
+    │   │   │   ├── LoginRequest.java
+    │   │   │   ├── RegisterRequest.java
+    │   │   │   ├── VoteRequest.java
+    │   │   │   ├── CandidateRequest.java
+    │   │   │   ├── ElectionRequest.java
+    │   │   │   ├── AnnouncementRequest.java
+    │   │   │   ├── ResetPasswordRequest.java
+    │   │   │   └── UpdateProfileRequest.java
+    │   │   └── response/
+    │   │       ├── ApiResponse.java
+    │   │       ├── AuthResponse.java
+    │   │       ├── VoterResponse.java
+    │   │       ├── CandidateResponse.java
+    │   │       ├── ElectionResponse.java
+    │   │       └── ResultsResponse.java
+    │   ├── exception/
+    │   │   ├── GlobalExceptionHandler.java
+    │   │   ├── ResourceNotFoundException.java
+    │   │   ├── AlreadyVotedException.java
+    │   │   ├── ElectionClosedException.java
+    │   │   └── UnauthorizedException.java
+    │   └── VotingApplication.java
+    ├── src/main/resources/
+    │   ├── application.properties
+    │   └── schema.sql
+    └── pom.xml
+    
 ```
 
 ## DATABASE STRUCTURE REFERENCE (read-only,
@@ -309,5 +393,168 @@ just use this to understand the data shape for API calls):
     VITE_API_BASE_URL=http://localhost:8080
 
 ```
+
+
+
+You are an expert Java Spring Boot developer. Create a complete, 
+fully functional backend for an Online Voting System with the 
+following specifications:
+
+TECH STACK:
+- Java Spring Boot
+- Spring Security + JWT Authentication
+- Spring Data JPA + Hibernate
+- MySQL Database
+- Maven build tool
+- JavaMailSender for email services
+- iTextPDF for PDF export
+- OpenCSV for CSV export
+
+DATABASE SCHEMA - Create these exact tables:
+
+1. voters (id, full_name, email, password, national_id, phone, 
+   address, profile_picture, role ENUM(ADMIN,VOTER), 
+   status ENUM(PENDING,ACTIVE,DEACTIVATED), 
+   email_verified BOOLEAN, created_at TIMESTAMP)
+
+2. elections (id, title, description, start_time DATETIME, 
+   end_time DATETIME, is_active BOOLEAN, results_locked BOOLEAN, 
+   created_by, created_at TIMESTAMP)
+
+3. election_categories (id, election_id FK, category_name)
+
+4. candidates (id, full_name, party, bio, photo_url, 
+   election_category_id FK)
+
+5. votes (id, voter_id FK, candidate_id FK, 
+   election_category_id FK, voted_at TIMESTAMP)
+
+6. notifications (id, voter_id FK, message, is_read BOOLEAN, 
+   created_at TIMESTAMP)
+
+7. announcements (id, title, message, created_by FK, 
+   created_at TIMESTAMP)
+
+8. audit_logs (id, user_id FK, action, details, 
+   timestamp TIMESTAMP)
+
+FULL PROJECT STRUCTURE TO GENERATE:
+
+
+
+
+ENDPOINTS TO IMPLEMENT:
+
+```
+
+    Auth:
+    POST /api/auth/register
+    POST /api/auth/login
+    POST /api/auth/forgot-password
+    POST /api/auth/reset-password
+    GET  /api/auth/verify-email?token=
+
+    Voter:
+    GET    /api/voter/profile
+    PUT    /api/voter/profile
+    PUT    /api/voter/profile/photo
+    DELETE /api/voter/account
+    GET    /api/voter/history
+    GET    /api/voter/notifications
+    PUT    /api/voter/notifications/{id}/read
+
+    Elections (voter view):
+    GET /api/elections
+    GET /api/elections/active
+    GET /api/elections/upcoming
+    GET /api/elections/past
+    GET /api/elections/{id}
+
+    Voting:
+    POST /api/votes/cast
+    GET  /api/votes/status/{electionId}
+
+    Admin - Voters:
+    GET  /api/admin/voters
+    GET  /api/admin/voters/pending
+    GET  /api/admin/voters/{id}
+    GET  /api/admin/voters/{id}/activity
+    PUT  /api/admin/voters/{id}/approve
+    PUT  /api/admin/voters/{id}/deactivate
+    PUT  /api/admin/voters/{id}/reset-password
+
+    Admin - Elections:
+    GET    /api/admin/elections
+    POST   /api/admin/elections
+    PUT    /api/admin/elections/{id}
+    DELETE /api/admin/elections/{id}
+    PUT    /api/admin/elections/{id}/publish
+    PUT    /api/admin/elections/{id}/lock-results
+
+    Admin - Candidates:
+    GET    /api/admin/candidates
+    POST   /api/admin/candidates
+    PUT    /api/admin/candidates/{id}
+    DELETE /api/admin/candidates/{id}
+
+    Admin - Results:
+    GET /api/admin/results/{electionId}
+    GET /api/admin/results/{electionId}/export/pdf
+    GET /api/admin/results/{electionId}/export/csv
+
+    Admin - System:
+    GET  /api/admin/audit-logs
+    GET  /api/admin/announcements
+    POST /api/admin/announcements
+    PUT  /api/admin/announcements/{id}
+    DELETE /api/admin/announcements/{id}
+
+```
+
+DTOs:
+- All request DTOs need @Valid, @NotBlank, @Email 
+  validation annotations
+- All response DTOs should be clean (no passwords)
+- ApiResponse should wrap all responses with 
+  success boolean, message, and data fields
+
+Exception Handling:
+- GlobalExceptionHandler: handle all custom exceptions,
+  return proper HTTP status codes (404, 400, 401, 403, 409)
+- Each exception should return meaningful error message
+
+application.properties must include:
+
+```
+    spring.datasource.url=jdbc:mysql://localhost:3306/voting_db
+    spring.datasource.username=root
+    spring.datasource.password=your_password
+    spring.jpa.hibernate.ddl-auto=update
+    spring.jpa.show-sql=true
+    jwt.secret=your_jwt_secret_key_here
+    jwt.expiration=86400000
+    spring.mail.host=smtp.gmail.com
+    spring.mail.port=587
+    spring.mail.username=your_email
+    spring.mail.password=your_app_password
+    spring.mail.properties.mail.smtp.auth=true
+    spring.mail.properties.mail.smtp.starttls.enable=true
+```
+
+
+pom.xml must include these dependencies:
+- spring-boot-starter-web
+- spring-boot-starter-security
+- spring-boot-starter-data-jpa
+- spring-boot-starter-mail
+- spring-boot-starter-validation
+- mysql-connector-java
+- jjwt-api, jjwt-impl, jjwt-jackson (version 0.11.5)
+- itext7-core (for PDF export)
+- opencsv (for CSV export)
+- lombok
+- spring-boot-starter-test
+
+
 
 a voting system
