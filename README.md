@@ -122,7 +122,7 @@ frontend/
 ├── vite.config.js
 └── package.json
 
-DATABASE STRUCTURE REFERENCE (read-only,
+## DATABASE STRUCTURE REFERENCE (read-only,
 just use this to understand the data shape for API calls):
 
 ```
@@ -157,7 +157,7 @@ just use this to understand the data shape for API calls):
     - id, user_id, action, details, timestamp
 ```
 
-# API CALLS REFERENCE - All axios calls must use these 
+## API CALLS REFERENCE - All axios calls must use these 
 ```
     exact endpoints from http://localhost:8080:
 
@@ -228,14 +228,7 @@ just use this to understand the data shape for API calls):
     - deleteAnnouncement(id) → DELETE /api/admin/announcements/{id}
 
 ```
-AXIOS SETUP (axios.js):
-- Base URL: http://localhost:8080
-- Attach JWT token automatically from localStorage 
-  to every request Authorization header as Bearer token
-- Response interceptor: if 401 received, clear token 
-  and redirect to /login
-- Request interceptor: attach token if it exists
-
+## AXIOS SETUP (axios.js):
 
 
 ```
